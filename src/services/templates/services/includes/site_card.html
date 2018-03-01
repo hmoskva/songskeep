@@ -1,0 +1,11 @@
+{% load static %}
+<div class="flex-item box">
+    <div class="thumbnail">
+        <img class="img-fluid" style="height: 200px;" src="{% if instance.logo %}{{ instance.logo.url }}{% else %}{% static 'img/pic02.jpg' %}{% endif %}" alt="" />
+    </div>
+    <div class="content">
+        <h3 class="text-center">{{ instance.name }}</h3>
+        <p>Placerat ornare. Pellentesque od sed euismod in, pharetra ltricies edarcu cas consequat.</p>
+        <p class="text-center text-light"><a class="btn btn-sm btn-outline-secondary" href="{{ instance.get_archive_url }}">View archive</a></p>
+    </div>
+</div>

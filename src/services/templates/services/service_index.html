@@ -1,0 +1,57 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Sites{% endblock %}
+
+{% block content %}
+    {% if sites|length > 0 %}
+    <div class="container my-5">
+    <div class="card border-secondary mb-3 text-center site-card">
+      <div class="card-header">
+        <ul class="nav nav-tabs card-header-tabs">
+            {% include 'services/includes/site_nav.html' with sites=sites %}
+{#            {% for site in sites %}#}
+{#                <li class="nav-item">#}
+{#                    <a data-url="{{ site.get_absolute_url }}" class="nav-link site-select {% if forloop.first %}active{% endif %}" style="text-decoration: none">{{ site.name }}</a>#}
+{#                  </li>#}
+{#            {% endfor %}#}
+        </ul>
+      </div>
+      <div class="card-body">
+      {% with sites|first as initial %}
+        <h5 class="card-title">{{ initial.name }} - <small>Most recent songs</small></h5>
+        <p class="card-text">{% if initial.props %}{{ initial.props }}{% else %}No description available{% endif %}</p>
+        {% endwith %}
+          <div class="table-wrapper">
+            <table class="songs-list-table">
+                <thead>
+                    <tr>
+                        <th class="text-center">S/N</th>
+                        <th class="text-center">Title</th>
+                        <th class="text-center">Artist</th>
+                        <th class="text-center">Site</th>
+                        <th class="text-center">Date</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% with sites|first as initial %}
+                    {% include 'services/includes/songs_list.html' with songs=initial.songs.all|slice:"5" %}
+
+                </tbody>
+            </table>
+      </div>
+
+      </div>
+        <div class="card-footer bg-transparent border-secondary"><a href="{{ initial.get_archive_url }}" class="btn btn-outline-secondary btn-sm archive-link">Go to archive</a></div>
+    {% endwith %}
+    </div>
+    </div>
+{% else %}
+    <div class="col-6 mx-auto py-5 text-center">
+        <p class="display-4">Oops. We are yet to update our libs for this category. Please check back again soon.</p>
+    </div>
+{% endif %}
+{% endblock %}
+{#{% block js %}#}
+{#<script src="{% static 'js/services.js' %}"></script>#}
+{#{% endblock %}#}

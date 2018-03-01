@@ -1,0 +1,79 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Home{% endblock %}
+{% block content %}
+
+    <section id="banner">
+        <div class="content">
+            <h1>Get it all in one place</h1>
+            <p>Keep up to date with latest songs from all your favorite music sharing web services. Subscribe to get real time notifications.</p>
+            <ul class="actions">
+                <li><a href="#one" class="button scrolly">Explore</a></li>
+                <li><a href="/sites/?category=naija" class="button alt">Browse Recents</a></li>
+            </ul>
+        </div>
+    </section>
+    <section id="one" class="wrapper">
+        <div class="inner flex flex-3">
+            <div class="flex-item left">
+                {% for site in local_sites %}
+                <div>
+                    <h3><a href="{{ site.get_archive_url }}">{{ site.name }}</a></h3>
+                    {% with site.songs.all|slice:"2" as songs_list %}
+                        {% if songs_list|length > 0 %}
+                            <p>{% for song in songs_list %}- <a href="{{ song.url }}">{{ song.title }}</a> by {{ song.artist }}<br/>{% endfor %}</p>
+                        {% else %}
+                        <p>There are currently no songs available</p>
+                        {% endif %}
+                    {% endwith %}
+                </div>
+                {% endfor %}
+
+            </div>
+            <div class="flex-item image fit round">
+                <img src="{% static 'img/pic01.jpg' %}" alt="" />
+            </div>
+            <div class="flex-item right">
+                {% for site in foreign_sites %}
+                <div>
+                    <h3>{{ site.name }}</h3>
+                    {% with site.songs.all|slice:"2" as songs_list %}
+                        {% if songs_list|length > 0 %}
+                        <p>{% for song in songs_list %}- {{ song.title }} by {{ song.artist }}<br/>{% endfor %}</p>
+                        {% else %}
+                        <p>There are currently no songs available</p>
+                        {% endif %}
+                    {% endwith %}
+                </div>
+                    {% empty %}
+                    <p>Forign sites appear here when theyve been updated</p>
+                {% endfor %}
+
+            </div>
+        </div>
+    </section>
+    <section id="two" class="wrapper style1 special">
+				<div class="inner">
+					<h2>Testimonial</h2>
+					<figure>
+					    <blockquote>
+					        "I love the fact that i dont have to visit so many of my favorite sites to get info on new music. Songskeep keeps it all organized for me."
+					    </blockquote>
+					    <footer>
+					        <cite class="author">Sogbesan Halima</cite>
+					        <cite class="company">CBC Journalist</cite>
+					    </footer>
+					</figure>
+				</div>
+			</section>
+    <h1 class="text-center mt-5" style="color: #bbb; position: relative;">Featured Services</h1>
+    <section id="three" class="wrapper">
+        <div class="inner flex flex-3">
+            {% for fs in feature_sites %}
+                {% include 'services/includes/site_card.html' with instance=fs %}
+            {% endfor %}
+        </div>
+    </section>
+{% endblock %}
+

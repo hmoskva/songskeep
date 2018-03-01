@@ -1,0 +1,38 @@
+<footer id="footer">
+<div class="inner">
+    <h2>Subscribe for Updates</h2>
+    <form action="{% url 'sites:subscribe' %}" class="sub-form">{% csrf_token %}
+        <div class="form-group-lg">
+            <div class="input-group">
+                <input type="email" name="email" id="email" value="" placeholder="Email" class="form-control" />
+                <span class="input-group-btn">
+      <button class="btn btn-outline-light " type="submit">Subscribe</button>
+        </span>
+            </div>
+        </div>
+
+
+{#        <div class="row uniform">#}
+{#            <div class="9u$ 12u$(small)">#}
+{#                <input type="email" name="email" id="email" value="" placeholder="Email" />#}
+{#            </div>#}
+{#            <div class="3u$ 12u$(small)">#}
+{#                <ul class="actions">#}
+{#                    <li><input type="submit" value="Subscribe" class="fit" /></li>#}
+{#                </ul>#}
+{#            </div>#}
+{#        </div>#}
+    </form>
+
+    <ul class="actions">
+        <li><span class="icon fa-phone"></span> <a href="#">(+234) 7085-089897</a></li>
+        <li><span class="icon fa-envelope"></span> <a href="#">dejisogbesan@rocketmail.com</a></li>
+        <li><span class="icon fa-map-marker"></span> 26 Kaltungo Street, Garki II, Abuja</li>
+    </ul>
+</div>
+<div class="copyright">
+    &copy;  <a href="https://hsogbesan.com.ng">Sogbesan Habib</a>. <br/>
+    <i class="fa fa-github"></i> <a href="#">Fork this project from GitHub</a><br/>
+    {% now 'Y' %}
+</div>
+</footer>

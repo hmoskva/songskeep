@@ -1,0 +1,5 @@
+{% for site in sites %}
+    <li class="nav-item">
+    <a data-url="{{ site.get_absolute_url }}" class="nav-link site-select {% if forloop.first %}active{% endif %}" style="text-decoration: none">{{ site.name }}</a>
+    </li>
+{% endfor %}

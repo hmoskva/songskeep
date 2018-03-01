@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+
+{% block title %}{{ site }} Archive{% endblock %}
+
+{% block content %}
+    <ul>
+     {% for song in site.songs.all %}
+         <li>{{ song.title }} -- {{ song.artist }}</li>
+    {% empty %}
+         <li>No songs</li>
+    {% endfor %}
+    </ul>
+
+
+{% endblock %}
