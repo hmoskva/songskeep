@@ -1,4 +1,5 @@
 from django.http import JsonResponse
+from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from django.shortcuts import render, get_object_or_404
 from django.template.loader import render_to_string
 
@@ -84,7 +85,15 @@ def subscribe(request):
 
 def songs_archive(request, slug):
     site = get_object_or_404(Site, slug=slug)
-    context = {'site': site}
+    page = request.GET.get('page', 1)
+    paginator = Paginator(site.songs.all(), 10)
+    try:
+        songs = paginator.page(page)
+    except PageNotAnInteger:
+        songs = paginator.page(1)
+    except EmptyPage:
+        songs = paginator.page(paginator.num_pages)
+    context = {'site': site, 'songs': songs}
     return render(request, 'services/archive.html', context)
 
 

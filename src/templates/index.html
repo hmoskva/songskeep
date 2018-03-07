@@ -7,7 +7,7 @@
     <section id="banner">
         <div class="content">
             <h1>Get it all in one place</h1>
-            <p>Keep up to date with latest songs from all your favorite music sharing web services. Subscribe to get real time notifications.</p>
+            <p>Keep up to date with latest songs from all your favorite music sharing web services. <br/>Subscribe to get real time notifications.</p>
             <ul class="actions">
                 <li><a href="#one" class="button scrolly">Explore</a></li>
                 <li><a href="/sites/?category=naija" class="button alt">Browse Recents</a></li>
@@ -17,12 +17,15 @@
     <section id="one" class="wrapper">
         <div class="inner flex flex-3">
             <div class="flex-item left">
+                <div class="inner">
+                    <h2>Local</h2>
+                </div>
                 {% for site in local_sites %}
                 <div>
                     <h3><a href="{{ site.get_archive_url }}">{{ site.name }}</a></h3>
                     {% with site.songs.all|slice:"2" as songs_list %}
                         {% if songs_list|length > 0 %}
-                            <p>{% for song in songs_list %}- <a href="{{ song.url }}">{{ song.title }}</a> by {{ song.artist }}<br/>{% endfor %}</p>
+                            <p>{% for song in songs_list %}- <a target="_blank" href="{{ song.url }}">{{ song.title }}</a> by {{ song.artist }}<br/>{% endfor %}</p>
                         {% else %}
                         <p>There are currently no songs available</p>
                         {% endif %}
@@ -32,7 +35,7 @@
 
             </div>
             <div class="flex-item image fit round">
-                <img src="{% static 'img/pic01.jpg' %}" alt="" />
+                <img src="{% static 'img/pic01.png' %}" alt="" />
             </div>
             <div class="flex-item right">
                 {% for site in foreign_sites %}
@@ -47,7 +50,7 @@
                     {% endwith %}
                 </div>
                     {% empty %}
-                    <p>Forign sites appear here when theyve been updated</p>
+                    <p>Foreign sites appear here when updated</p>
                 {% endfor %}
 
             </div>

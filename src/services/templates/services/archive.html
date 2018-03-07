@@ -3,13 +3,51 @@
 {% block title %}{{ site }} Archive{% endblock %}
 
 {% block content %}
-    <ul>
-     {% for song in site.songs.all %}
-         <li>{{ song.title }} -- {{ song.artist }}</li>
-    {% empty %}
-         <li>No songs</li>
+<br/>
+
+<div class="container">
+    <h2 class="display-5 text-center">{{site.name}} Archive</h2>
+<div class="table-wrapper">
+    <table class="">
+        <thead>
+            <tr>
+                <th class="text-center">S/N</th>
+                <th class="text-center">Title</th>
+                <th class="text-center">Artist</th>
+                <th class="text-center">Site</th>
+                <th class="text-center">Date</th>
+            </tr>
+        </thead>
+        <tbody>
+
+            {% include 'services/includes/songs_list.html' with songs=songs %}
+
+        </tbody>
+    </table>
+    {% if songs.has_other_pages %}
+    <nav>
+  <ul class="pagination">
+    {% if songs.has_previous %}
+      <li class="page-item"><a class="page-link" href="?page={{ songs.previous_page_number }}">Previous</a></li>
+    {% else %}
+      <li class="page-item disabled"><a class="page-link" href="#" tabindex="-1">Previous</a></li>
+    {% endif %}
+    {% for i in songs.paginator.page_range %}
+      {% if songs.number == i %}
+
+        <li class="page-item active"><a class="page-link" href="#">{{i}} <span class="sr-only">(current)</span></a></li>
+      {% else %}
+        <li class="page-item"><a class="page-link" href="?page={{ i }}">{{ i }}</a></li>
+      {% endif %}
     {% endfor %}
-    </ul>
-
-
+    {% if songs.has_next %}
+      <li class="page-item"><a class="page-link" href="?page={{ songs.next_page_number }}">Next</a></li>
+    {% else %}
+      <li class="page-item disabled"><a class="page-link" href="#">Next</a></li>
+    {% endif %}
+  </ul>
+        </nav>
+{% endif %}
+</div>
+</div>
 {% endblock %}

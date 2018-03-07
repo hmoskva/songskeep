@@ -1662,7 +1662,7 @@
 		}
 
 	a {
-		color: #25a2c3;
+		color: #ff556d;
 		text-decoration: underline;
 	}
 
@@ -1885,8 +1885,8 @@
 		input[type="tel"]:focus,
 		select:focus,
 		textarea:focus {
-			border-color: #25a2c3;
-			box-shadow: 0 0 0 1px #25a2c3;
+			border-color: #ff556d;
+			box-shadow: 0 0 0 1px #ff556d;
 		}
 
 	.select-wrapper {
@@ -1989,16 +1989,16 @@
 
 		input[type="checkbox"]:checked + label:before,
 		input[type="radio"]:checked + label:before {
-			background: #f6755e;
-			border-color: #f6755e;
+			background: #5ef671;
+			border-color: #5ef671;
 			color: #ffffff;
 			content: '\f00c';
 		}
 
 		input[type="checkbox"]:focus + label:before,
 		input[type="radio"]:focus + label:before {
-			border-color: #25a2c3;
-			box-shadow: 0 0 0 1px #25a2c3;
+			border-color: #ff556d;
+			box-shadow: 0 0 0 1px #ff556d;
 		}
 
 	input[type="checkbox"] + label:before {
@@ -2396,7 +2396,7 @@
 		-webkit-transition: background-color 0.2s ease-in-out, color 0.2s ease-in-out;
 		-ms-transition: background-color 0.2s ease-in-out, color 0.2s ease-in-out;
 		transition: background-color 0.2s ease-in-out, color 0.2s ease-in-out;
-		background-color: #f6755e;
+		background-color: #5ef671;
 		border-radius: 4px;
 		border: 0;
 		color: #ffffff;
@@ -2509,7 +2509,7 @@
 		input[type="button"].special,
 		button.special,
 		.button.special {
-			background-color: #25a2c3;
+			background-color: #ff556d;
 			color: #ffffff !important;
 		}
 
@@ -2626,11 +2626,11 @@
 	}
 
 		.wrapper h1, .wrapper h2, .wrapper h3, .wrapper h4, .wrapper h5 {
-			color: #25a2c3;
+			color: #ff556d;
 		}
 
 		.wrapper.style1 {
-			background: #f6755e;
+			background: #5ef671;
 			color: #fcdcd6;
 		}
 
@@ -2683,7 +2683,7 @@
 	}
 
 		#header .logo {
-			color: #f6755e;
+			color: #5ef671;
 			font-family: "Pacifico", cursive;
 			font-size: 2.5em;
 			letter-spacing: 2px;
@@ -2794,7 +2794,7 @@
 		-ms-transition: -ms-transform 0.5s ease, visibility 0.5s;
 		transition: transform 0.5s ease, visibility 0.5s;
 		-webkit-overflow-scrolling: touch;
-		background: #25a2c3;
+		background: #ff556d;
 		color: #ffffff;
 		height: 100%;
 		max-width: 80%;
@@ -2920,7 +2920,7 @@
 
 	#banner {
 		padding: 14em 0 12em 0;
-		background-image: url('/static/img/banner.jpg');
+		background-image: url(../img/banner.png);
 		background-size: cover;
 		background-position: center top;
 		background-repeat: no-repeat;
@@ -2937,7 +2937,7 @@
 
 		#banner h1 {
 			font-size: 3em;
-			color: #25a2c3;
+			color: #ff556d;
 			line-height: 1em;
 			margin: 0 0 0.5em 0;
 			padding: 0;
@@ -3136,7 +3136,7 @@
 
 	#footer {
 		padding: 6em 0 4em 0;
-		background: #25a2c3;
+		background: #ff556d;
 		text-align: center;
 		color: #c8e7f0;
 	}
@@ -3146,7 +3146,7 @@
 		}
 
 		#footer .icon {
-			color: #f6755e;
+			color: #5ef671;
 		}
 
 		#footer a {
